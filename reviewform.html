@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+<html>
+ <head>
+   <meta charset="utf-8">  
+ <title>{% block title %}Sentiment Analyser{% endblock %}</title>
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> 
+ </head>
+ <style> 
+   
+   img {
+      left:0px;
+      object-fit:cover;
+      display:block;
+      width: 1000px;height:100px;
+    } 
+   body {background-color: black;text-align:center;margin:0px;padding:0px; margin-left: 500px;font-family: 'Helvetica'; margin-top: 100px; }
+   h1 { color: #fff;font-family: 'Verdana';text-align:center} 
+   h2 { color: blue;font-family: 'Broadway';text-align:center}
+   h2.inset {border-style: inset;}
+
+  h1 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 200%;
+  text-shadow:1px 1px 2px white, 0 0 25px blue;
+  transition: width 2s;
+  }
+  h2{
+     font-size: 400%;
+  }
+</style>
+
+   <h2>Sentiment Analyser</h2>
+   <h1>Please enter a sentence:</h1>
+{% from "_formhelpers.html" import render_field %}
+   <form method=post action="/results">
+ <dl>
+    {{ render_field(form.newreview, cols='30', rows='10') }}
+ </dl>
+ <div>
+ <input type=submit value='Submit sentence' class="btn btn-primary btn-block btn-large"name='submit_btn'>
+ </div>
+</form>
+</body>
+</html>

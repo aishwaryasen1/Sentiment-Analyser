@@ -1,0 +1,47 @@
+<!doctype html>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+<html>
+ <head>
+    <meta charset="utf-8">  
+ <title>{% block title %}Sentiment Analyser{% endblock %}</title>
+ <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+ <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+ <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+ <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+ 
+ </head>
+ <style>
+
+    body {background-color: black; text-align:center; margin-left: 550px;font-family: 'Comic Sans MS'; margin-top: 25px;background-image: url("C:/Users/Dell/Desktop/Flask/Flask/static/background.png");}
+{% if prediction=='positive' %}
+    h3 { color:green;font-family: 'Arimo';font-size:300%} 
+    h4 { color:green;font-family: 'Arimo';font-size:250%} 
+    div { color:lawngreen;font-family: 'Arimo';font-size:200%}
+    div2 { color:lawngreen;font-family: 'Arimo';font-size:250%} 
+{% else %}
+    h3 { color:maroon;font-family: 'Arimo';font-size:300%} 
+    h4 { color:maroon;font-family: 'Arimo';font-size:250%} 
+    div { color:red;font-family: 'Arimo';font-size:200%}
+    div2 { color:red;font-family: 'Arimo';font-size:150%}
+{% endif %}     
+  </style>
+ {%block content%}{%endblock%}
+<h3>Your sentence:</h3>
+<div>{{ content }}</div>
+<h4>Prediction:</h4>
+<div2>This sentence is <strong>{{ prediction }}</strong>
+</div2>
+{% if prediction=='positive' %}
+<img src="{{ url_for('static', filename='smileyface.jpg') }}">
+{% else %}
+<img src="{{ url_for('static', filename='sadface.jpg') }}">
+{% endif %}
+<div id='button'>
+ <form action="/">
+ <input type=submit value='Submit another sentence'>
+ </form>
+</div>
+</body>
+
+</html>
